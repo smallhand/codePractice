@@ -6,11 +6,11 @@ int main()
    while(cin>>i)
    {
        if(i<0)
-       cout<<"-1"<<endl;
-       if(i==0)
-       cout<<"0"<<endl;
-       if(i>0)
-       cout<<"1"<<endl;
+        cout<<"-1"<<endl;
+       else if(i==0)
+        cout<<"0"<<endl;
+       else if(i>0)
+        cout<<"1"<<endl;
    }
    return 0;
 }
