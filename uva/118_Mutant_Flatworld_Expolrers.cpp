@@ -11,11 +11,11 @@ int main() {
     int max_row , max_column;
     cin >> max_row >> max_column;
 
-    int row, column;
-    int tmp_row, tmp_column;
+    int row, column, tmp_row, tmp_column;
     char direct;
-    bool is_outbound = false;
+    bool is_outbound;
     int maps[51][51];
+
     memset(maps, 0, sizeof(maps));
     string in_str;
     while (cin >> row >> column >> direct) {
