@@ -1,5 +1,5 @@
 /*
-Permutation Arrays (Output the order of array by the specific index)
+Permutation Arrays (Output the array with the specific order)
 Date: 2019/02/19, 18:06
 */
 #include <iostream>
