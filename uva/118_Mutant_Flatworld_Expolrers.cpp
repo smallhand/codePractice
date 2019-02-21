@@ -7,6 +7,12 @@ Date: 2019/02/20
 #include <string.h>
 using namespace std;
 
+// update row/column according by N,E,S,W; 2nd dimension, [0]:row, [1]:column
+int movePos[4][2] = {0, 1,
+                  1, 0,
+                  0, -1,
+                  -1, 0 };
+
 int main() {
     int max_row , max_column;
     cin >> max_row >> max_column;
@@ -21,9 +27,9 @@ int main() {
     faceIndex['W'] = 3;
 
     bool is_outbound;
-    int maps[51][51];
-
+    int maps[51][51]; // record which position the robots will fall (1:fall, 0:not fall)
     memset(maps, 0, sizeof(maps));
+
     string in_str;
     while (cin >> row >> column >> direct) {
         getchar();
@@ -35,18 +41,13 @@ int main() {
         for (int i=0; i<in_str.size(); i++){
             //cout << "s: " << in_str[i] << endl;
             if (in_str[i]=='F') { // Forward
+                /*
                 if (face[updateIndex]=='N') {
                     tmp_column =  (column+1);
                 }
-                else if(face[updateIndex]=='E'){
-                    tmp_row = (row+1);
-                }
-                else if (face[updateIndex]=='S'){
-                    tmp_column =  (column-1);
-                }
-                else if (face[updateIndex]=='W') {
-                    tmp_row = (row-1);
-                }
+                */
+                tmp_row = row + movePos[updateIndex][0];
+                tmp_column = column + movePos[updateIndex][1];
                 //printf("%d %d %d %d\n", tmp_row, tmp_column, max_row, max_column);
 
                 if (tmp_row<0 || tmp_row>max_row || tmp_column<0 || tmp_column>max_column) {
@@ -68,7 +69,7 @@ int main() {
             else if(in_str[i]=='L'){ // 'L'
                 updateIndex = (updateIndex+3) % 4;
             }
-            printf("test: %d %d %c\n", row, column, face[updateIndex]);
+            //printf("test: %d %d %c\n", row, column, face[updateIndex]);
         }
 
         printf("%d %d %c", row, column, face[updateIndex]);
