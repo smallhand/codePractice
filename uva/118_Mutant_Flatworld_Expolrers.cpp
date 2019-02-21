@@ -13,6 +13,13 @@ int main() {
 
     int row, column, tmp_row, tmp_column;
     char direct;
+    string face = "NESW";
+    int faceIndex[128];
+    faceIndex['N'] = 0;
+    faceIndex['E'] = 1;
+    faceIndex['S'] = 2;
+    faceIndex['W'] = 3;
+
     bool is_outbound;
     int maps[51][51];
 
@@ -21,21 +28,23 @@ int main() {
     while (cin >> row >> column >> direct) {
         getchar();
         getline(cin, in_str);
+
+        int updateIndex = faceIndex[direct];
         tmp_row = row, tmp_column = column;
         is_outbound = false;
         for (int i=0; i<in_str.size(); i++){
-            cout << "s: " << in_str[i] << endl;
+            //cout << "s: " << in_str[i] << endl;
             if (in_str[i]=='F') { // Forward
-                if (direct=='N') {
+                if (face[updateIndex]=='N') {
                     tmp_column =  (column+1);
                 }
-                else if(direct=='E'){
+                else if(face[updateIndex]=='E'){
                     tmp_row = (row+1);
                 }
-                else if (direct=='S'){
+                else if (face[updateIndex]=='S'){
                     tmp_column =  (column-1);
                 }
-                else {
+                else if (face[updateIndex]=='W') {
                     tmp_row = (row-1);
                 }
                 //printf("%d %d %d %d\n", tmp_row, tmp_column, max_row, max_column);
@@ -54,37 +63,15 @@ int main() {
                 column = tmp_column;
             }
             else if(in_str[i]=='R') {
-                if (direct=='N') {
-                    direct = 'E';
-                }
-                else if (direct=='E') {
-                    direct = 'S';
-                }
-                else if (direct=='S'){
-                    direct = 'W';
-                }
-                else {
-                    direct = 'N';
-                }
+                updateIndex = (updateIndex+1) % 4;
             }
-            else { // 'L'
-                if (direct=='N'){
-                    direct = 'W';
-                }
-                else if (direct=='W'){
-                    direct = 'S';
-                }
-                else if (direct=='S'){
-                    direct = 'E';
-                }
-                else {
-                    direct = 'N';
-                }
+            else if(in_str[i]=='L'){ // 'L'
+                updateIndex = (updateIndex+3) % 4;
             }
-            //printf("test: %d %d %c\n", row, column, direct);
+            printf("test: %d %d %c\n", row, column, face[updateIndex]);
         }
 
-        printf("%d %d %c", row, column, direct);
+        printf("%d %d %c", row, column, face[updateIndex]);
         if (is_outbound) {
             cout << " LOST";
         }
