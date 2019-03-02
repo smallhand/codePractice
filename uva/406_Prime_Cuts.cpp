@@ -6,6 +6,7 @@
 Date: 2019/02/28
 */
 #include <iostream>
+#include <string.h>
 #define NUM 1000
 using namespace std;
 
