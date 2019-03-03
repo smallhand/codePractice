@@ -52,8 +52,6 @@ int main() {
 
                 if (tmp_row<0 || tmp_row>max_row || tmp_column<0 || tmp_column>max_column) {
                     if (maps[row][column]){ // if some robots have fallen at this point, then the robot do not execute the same order
-                        tmp_row = row;
-                        tmp_column = column;
                         continue;
                     }
                     maps[row][column] = 1;
