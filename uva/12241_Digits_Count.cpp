@@ -1,27 +1,38 @@
 #include <iostream>
-#include <string.h>
-
 using namespace std;
-
-
-int main(){
-    int a, b;
-    int map[10];
-    while(cin >> a>> b && a && b) {
-        memset(map, 0, sizeof(map));
-        for (int i=a; i<=b; i++) {
-            int tmp = i;
-            while(tmp/10){
-                map[tmp%10]++;
-                tmp /= 10;
-            }
-            map[tmp%10]++;
+void p(int num,int a[])
+{
+    int ten=1;
+    int temp=num;
+    while(num)
+    {
+        for(int i=0;i<num%10;i++)
+        {
+            a[i]+=ten;
         }
-        for (int i=0; i<10; i++) {
-            cout << map[i] << " ";
+        for(int i=0;i<10;i++)
+        {
+            a[i]+=ten*(num/10);
         }
-        cout << endl;
+        a[0]-=ten;
+        a[num%10]+=(temp%ten)+1;
+        ten*=10;
+        num/=10;
     }
-
+}
+int main()
+{
+    int a,b;
+    while(cin>>a>>b && a+b)
+    {
+        int Num[10]={0};
+        p(a-1,Num); /*計算0到a的0~9個有幾個*/
+        for(int i=0;i<10;i++) Num[i]*=-1;   /* 所求= 0~b - 0~(a-1) */
+        p(b,Num);   /*計算0到b的0~9個有幾個*/
+        for(int i=0;i<10;i++)
+        {
+            cout<<Num[i]<<(i==9 ? '\n': ' ');
+        }
+    }
     return 0;
 }
