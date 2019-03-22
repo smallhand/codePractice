@@ -3,6 +3,7 @@
 2. No matter how many digits, %10, /10 until num/10==0
 3. Get digit from num%10, and then count the map
 Date: 2019/02/28
+See: uva11241, need faster algorithm, or it will exceed time limit
 */
 #include <iostream>
 #include <string.h>
