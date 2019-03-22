@@ -21,7 +21,7 @@ node *insert(node *head, int new_value){
 
     node *tree = head;
     node *next = head;
-    while(next!=nullptr) { // repeat traveling until leaf
+    while(next!=nullptr) { // 1. repeat traveling until leaf(find the position that will be inserted)
         tree = next;
         if (new_value > next->value) {
             next = next -> right;
@@ -31,6 +31,7 @@ node *insert(node *head, int new_value){
         }
     }
 
+    // 2. Then, insert the new value
     if (new_value > tree->value) {
         tree->right = N;
     }
