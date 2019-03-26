@@ -24,7 +24,7 @@ int countN(string str_in){
     for (int len=1; len<str_in.length()+1; len++) {
         for (int i=0; i < str_in.length()+1-len; i++ ){
             // if the substring isn't in the palList, and it is palindromes, then push into the palList
-            if (find(palList.begin(), palList.end(), str_in.substr(i, len)) == palList.end() && isPal(str_in.substr(i, len))) {
+            if (find(palList.begin(), palList.end(), str_in.substr(i, len)) == palList.end() && isPal(str_in.substr(i, len))) { // substr: the ith postion, and str length=len
                 palList.push_back(str_in.substr(i, len));
             }
         }
