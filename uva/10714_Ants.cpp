@@ -11,7 +11,7 @@ int main(){
     while (cin >> cases) {
         while(cases--) {
             int len, numbers;
-            cin >> len >> numbers;
+            cin >> len >> numbers; // 總長、螞蟻數目
             int pos;
             int m, M, tmp;
             m = M = -1;
