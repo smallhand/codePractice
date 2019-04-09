@@ -1,3 +1,6 @@
+/*
+Ref: http://programming-study-notes.blogspot.com/2014/02/uva-532-dungeon-master.html
+*/
 #include <iostream>
 #include <queue>
 #include <string.h>
