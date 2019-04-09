@@ -1,5 +1,9 @@
 /*
 Date: 2019/03/03
+Greedy
+1. 左界由小到大排序
+2. 選左界小於目前目標的左界範圍，然後右界最大的
+3. 直到右界最大也比目標的左界小(沒線段符合，輸出0)，或是右界已經可以完全涵蓋(有線段符合)
 */
 #include <iostream>
 #include <vector>
@@ -41,7 +45,10 @@ int main(){
             while(Max < M) {
                 flag = -1;
                 left = Max; // (0,M) -> (left,M)
-                for (i=index; line[i].left<=left && i<pairs; i++) {
+                //for (i=index; line[i].left<=left && i<pairs; i++) {
+                for (i=index; i<pairs; i++) {
+                    if (line[i].left>left)
+                        break;
                     if (line[i].right > Max) {
                         Max = line[i].right;
                         flag = i;
