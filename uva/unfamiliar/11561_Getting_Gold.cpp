@@ -1,6 +1,6 @@
 /*
 Date: 2019/03/17
-位置分為現在(牆壁,超界,黃金)、下一步(陷阱、超界)
+dfs, 位置分為現在(牆壁,超界,黃金)、下一步(陷阱、超界)
 */
 #include <iostream>
 #include <string.h>
@@ -39,7 +39,7 @@ int dfs(int x, int y, int row, int col) {
     bool stop = false;
     for (int i=0; i<4; i++) {
         if (graph[x+go_xy[i][0]][y+go_xy[i][1]]=='T' &&
-            in_bound(x+go_xy[i][0], y+go_xy[i][1], row, col)){
+            in_bound(x+go_xy[i][0], y+go_xy[i][1], row, col)){ // 一定要加
                 stop = true;
                 break;
             }
@@ -60,8 +60,9 @@ int main() {
     while (cin >> col >> row) {
         memset(graph, 0, sizeof(graph));
         for (int i=0; i<row; i++) {
-            for (int j=0; j<col; j++)
-                cin >> graph[i][j];
+            //for (int j=0; j<col; j++)
+                //cin >> graph[i][j];
+            cin >> graph[i]; // 等同於上面兩行
         }
 
         // find the start('P') position
