@@ -1,3 +1,10 @@
+/*
+1. 得到一個點p的位置
+2. 累積到這個點的distance
+3. mark this pos #
+4. then push the p into queue -> 即將走訪這個點
+5. 開始走訪: pop
+*/
 #include <iostream>
 #include <queue>
 #include <string.h>
