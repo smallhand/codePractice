@@ -28,7 +28,7 @@ void Tier::insert(string s){ // insert the tree from up to down
 
     for (int i=0; i<s.size(); i++) {
         if (s[i]=='\\') {
-            if (!path[up].count(word)) { // the key word appear in the paht[u]
+            if (!path[up].count(word)) { // the key word does not appear in the path[u]
                 path[size].clear(); //預先幫下一個清空記憶體
                 path[up][word] = size++; //word下一個的層級
             }
